@@ -5,7 +5,7 @@ const val min = 60
 fun main() {
 
     println("Был(а) в сети ${agoToText(54)}")
-    println("Был(а) в сети ${agoToText(21 * min)}")
+    println("Был(а) в сети ${agoToText(56 * min)}")
     println("Был(а) в сети ${agoToText(21 * hour)}")
     println("Был(а) в сети ${agoToText(3 * day)}")
     println("Был(а) в сети ${agoToText(2 * day)}")
@@ -26,16 +26,18 @@ fun agoToText(time: Int): String {
     return text
 }
 
-//Не могу понять как реализовать правильное окончание с 12 до 20
-fun hours(ho: Int) = when (ho % 10) {
-    1 -> if (ho == 11) "часов" else "час"
-    2, 3, 4 -> "часа"
+
+fun hours(ho: Int) = when (ho) {
+    11 -> "часов"
+    1, 21 -> "час"
+    2, 3, 4, 22, 23, 24 -> "часа"
     else -> "часов"
 }
-//Не могу понять как реализовать правильное окончание с 12 до 20
-fun minut(mi: Int) = when (mi % 10) {
-    1 -> if (mi == 11) "минут" else "минуту"
-    2, 3, 4 -> "минуты"
+
+fun minut(mi: Int) = when (mi) {
+    11 -> "минут"
+    1, 21, 31, 41, 51 -> "минуту"
+    2, 3, 4, 22, 23, 24, 32, 33, 34, 42, 43, 44, 52, 53, 54 -> "минуты"
     else -> "минут"
 }
 
